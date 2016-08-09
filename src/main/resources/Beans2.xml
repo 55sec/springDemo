@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="textEditor" class="com.xyw55.demo1.TextEditor">
+        <!--什么都不知定-->
+        <!--<constructor-arg ref="spellChecker"/>-->
+        <!--指定参数类型-->
+        <!--<constructor-arg type="com.xyw55.demo1.SpellChecker" ref="spellChecker"/>-->
+        <!--指定参数index-->
+        <constructor-arg index="0" ref="spellChecker"/>
+    </bean>
+
+    <bean id="spellChecker" class="com.xyw55.demo1.SpellChecker">
+
+    </bean>
+</beans>

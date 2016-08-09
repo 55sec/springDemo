@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--init 实例化后调用的回调函数, destory 实例destory后调用的回调函数-->
+    <!--<bean id="helloWorld" class="com.xyw55.HelloWorld" init-method="init" destroy-method="destroy">-->
+        <!--<property name="message" value="Hello World"/>-->
+    <!--</bean>-->
+    <!--<bean class="com.xyw55.InitHelloWorld"/>-->
+
+    <!--定义父类template 抽象bean,不能实例化-->
+    <bean id="beanTemplate" abstract="true">
+        <property name="message" value="message1"/>
+        <property name="message2" value="message2"/>
+        <property name="message3" value="message3"/>
+
+    </bean>
+
+    <bean id="helloWorld" class="com.xyw55.HelloWorld">
+        <property name="message" value="message1"/>
+        <property name="message2" value="message2"/>
+    </bean>
+    <!--parent bean的继承-->
+    <!--<bean id="helloChina" class="com.xyw55.HelloChina" parent="helloWorld">-->
+        <!--<property name="message" value="message china"/>-->
+        <!--<property name="message3" value="meaage3"/>-->
+    <!--</bean>-->
+    <bean id="helloChina" class="com.xyw55.HelloChina" parent="beanTemplate">
+        <property name="message" value="message china"/>
+        <property name="message3" value="meaage3"/>
+    </bean>
+
+</beans>
