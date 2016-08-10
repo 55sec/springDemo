@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--<bean id="textEditor" class="com.xyw55.demo3.TextEditor">-->
+        <!--&lt;!&ndash;<constructor-arg ref="spellChecker"></constructor-arg>&ndash;&gt;-->
+    <!--</bean>-->
+
+    <!--byName 查找bean的id和name-->
+    <!--<bean id="textEditor" class="com.xyw55.demo3.TextEditor" autowire="byName">-->
+    <!--</bean>-->
+    <!--byType 查找bean的class-->
+    <!--<bean id="textEditor" class="com.xyw55.demo3.TextEditor" autowire="byType">-->
+    <!--</bean>-->
+    <!--constructor 根据构造器参数类型查找class-->
+    <bean id="textEditor" class="com.xyw55.demo3.TextEditor" autowire="constructor">
+    </bean>
+
+    <bean id="spellChecker" class="com.xyw55.demo3.SpellChecker"></bean>
+</beans>
