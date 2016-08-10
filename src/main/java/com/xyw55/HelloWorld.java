@@ -1,5 +1,8 @@
 package com.xyw55;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 /**
  * Created by xiayiwei on 16/8/8.
  */
@@ -23,10 +26,12 @@ public class HelloWorld {
         this.message2 = message2;
     }
 
+    @PostConstruct //初始化完成后的回调函数
     public void init() {
         System.out.println("init");
     }
 
+    @PreDestroy //实例destory前的回调函数
     public void destroy(){
         System.out.println("destroy");
     }

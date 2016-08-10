@@ -23,21 +23,21 @@ public class MainApp {
 //        BeanFactory beanFactory = new FileSystemXmlApplicationContext("/src/main/resources/Beans.xml");
 //        HelloWorld helloWorld = (HelloWorld) beanFactory.getBean("helloWorld");
 
-//        AbstractApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
-//        HelloWorld helloWorld = (HelloWorld) context.getBean("helloWorld");
-//        helloWorld.getMessage();
-//        context.registerShutdownHook();
-
-
-        ApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
+        AbstractApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
         HelloWorld helloWorld = (HelloWorld) context.getBean("helloWorld");
         helloWorld.getMessage();
-        helloWorld.getMessage2();
+        context.registerShutdownHook();
 
-        HelloChina helloChina = (HelloChina) context.getBean("helloChina");
-        helloChina.getMessage();
-        helloChina.getMessage2();
-        helloChina.getMessage3();
+
+//        ApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
+//        HelloWorld helloWorld = (HelloWorld) context.getBean("helloWorld");
+//        helloWorld.getMessage();
+//        helloWorld.getMessage2();
+//
+//        HelloChina helloChina = (HelloChina) context.getBean("helloChina");
+//        helloChina.getMessage();
+//        helloChina.getMessage2();
+//        helloChina.getMessage3();
 
     }
 }

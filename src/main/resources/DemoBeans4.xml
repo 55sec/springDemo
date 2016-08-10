@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+    <context:annotation-config/>
+
+    <!--测试Required-->
+    <!--<bean id="textEditor" class="com.xyw55.demo4.TextEditor">-->
+        <!--<property name="spellChecker" ref="spellChecker"/>-->
+        <!--<property name="set">-->
+            <!--<set>-->
+                <!--<value>1</value>-->
+                <!--<value>2</value>-->
+            <!--</set>-->
+        <!--</property>-->
+    <!--</bean>-->
+
+    <!--<bean id="spellChecker" class="com.xyw55.demo4.SpellChecker"/>-->
+
+    <bean id="textEditor" class="com.xyw55.demo4.TextEditor">
+        <property name="set">
+            <set>
+                <value>1</value>
+                <value>2</value>
+            </set>
+        </property>
+    </bean>
+
+    <bean id="spellChecker" class="com.xyw55.demo4.SpellChecker">
+        <property name="flag" value="1"/>
+    </bean>
+    <bean id="spellChecker2" class="com.xyw55.demo4.SpellChecker">
+        <property name="flag" value="2"/>
+    </bean>
+</beans>
