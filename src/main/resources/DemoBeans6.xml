@@ -10,4 +10,7 @@
     <bean id="cStartEventHandler" class="com.xyw55.demo6.CStartEventHandler"/>
     <bean id="cStopEventHandler" class="com.xyw55.demo6.CStopEventHandler"/>
 
+    <bean id="customEventHandler" class="com.xyw55.demo6.CustomEventHandler"/>
+    <bean id="customEventPublisher" class="com.xyw55.demo6.CustomEventPublisher"/>
+
 </beans>

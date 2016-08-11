@@ -13,6 +13,10 @@ public class MainApp {
         TextEditor textEditor = (TextEditor) context.getBean("textEditor");
         textEditor.getMessage();
 
+        CustomEventPublisher cvp = (CustomEventPublisher) context.getBean("customEventPublisher");
+        cvp.publish();
+        cvp.publish();
+
         context.stop();
     }
 }
