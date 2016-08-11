@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--<aop:config>-->
+        <!--<aop:aspect id="log" ref="logging">-->
+            <!--<aop:pointcut id="selectAll" expression="execution(* com.xyw55.demo7.*.*(..))"/>-->
+            <!--<aop:before method="beforeAdvice" pointcut-ref="selectAll"/>-->
+            <!--<aop:after method="afterAdvice" pointcut-ref="selectAll"/>-->
+            <!--<aop:after-returning method="afterReturningAdvice" returning="retval" pointcut-ref="selectAll"/>-->
+            <!--<aop:after-throwing method="afterThrowingAdvice" throwing="ex" pointcut-ref="selectAll"/>-->
+        <!--</aop:aspect>-->
+    <!--</aop:config>-->
+
+    <aop:aspectj-autoproxy/>
+
+    <bean id="student" class="com.xyw55.demo7.Student">
+        <property name="age" value="11"/>
+        <property name="name" value="ss"/>
+    </bean>
+
+    <bean id="logging" class="com.xyw55.demo7.Logging"/>
+
+</beans>
