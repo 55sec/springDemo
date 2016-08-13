@@ -16,29 +16,29 @@ import java.util.List;
 public class StudentJDBCTemplate implements StudentDao {
     private DataSource dataSource;
     private JdbcTemplate jdbcTemplate;
-    private PlatformTransactionManager transactionManager;
+//    private PlatformTransactionManager transactionManager;
 
     public void setDataSource(DataSource dataSource) {
         this.dataSource = dataSource;
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
-    public void setTransactionManager(PlatformTransactionManager transactionManager) {
-        this.transactionManager = transactionManager;
-    }
+//    public void setTransactionManager(PlatformTransactionManager transactionManager) {
+//        this.transactionManager = transactionManager;
+//    }
 
     public void create(String name, Integer age) {
-        TransactionDefinition definition = new DefaultTransactionDefinition();
-        TransactionStatus status = transactionManager.getTransaction(definition);
+//        TransactionDefinition definition = new DefaultTransactionDefinition();
+//        TransactionStatus status = transactionManager.getTransaction(definition);
         try {
             String sql = "insert into Student (name, age) values (?, ?)";
             jdbcTemplate.update(sql, name, age);
             System.out.println("Created Record Name = " + name + " Age = " + age);
 //            throw new RuntimeException("simulate Error condition") ;
-            transactionManager.commit(status);
+//            transactionManager.commit(status);
         } catch (Exception e) {
             e.printStackTrace();
-            transactionManager.rollback(status);
+//            transactionManager.rollback(status);
         }
         return;
     }
