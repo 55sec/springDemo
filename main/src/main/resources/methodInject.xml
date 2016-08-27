@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--方法替换-->
+    <bean id="prototypeReplacer" class="com.xyw55.methodInject.PrinterReplacer" scope="prototype"/>
+    <bean id="singletonReplacer" class="com.xyw55.methodInject.PrinterReplacer" scope="singleton"/>
+    <bean id="prototypePrinter" class="com.xyw55.methodInject.Printer" scope="prototype">
+        <replaced-method name="print" replacer="prototypeReplacer">
+            <arg-type>java.lang.String</arg-type>
+        </replaced-method>
+    </bean>
+    <bean id="singletonPrinter" class="com.xyw55.methodInject.Printer" scope="singleton">
+        <replaced-method name="print" replacer="singletonReplacer">
+            <arg-type>java.lang.String</arg-type>
+        </replaced-method>
+    </bean>
+
+    <!--Lookup方法注入。Lookup方法注入利用了容器的覆盖受容器管理的bean方法的能力，从而返回指定名字的bean实例。-->
+    <bean id="helloApi1" class="com.xyw55.methodInject.HelloImpl" scope="singleton">
+        <property name="printer" ref="prototypePrinter"/>
+        <lookup-method name="createPrototypePrinter" bean="prototypePrinter"/>
+        <lookup-method name="createSingletonPrinter" bean="singletonPrinter"/>
+    </bean>
+    <bean id="helloApi2" class="com.xyw55.methodInject.HelloImpl" scope="prototype">
+        <property name="printer" ref="prototypePrinter"/>
+        <lookup-method name="createPrototypePrinter" bean="prototypePrinter"/>
+        <lookup-method name="createSingletonPrinter" bean="singletonPrinter"/>
+    </bean>
+
+    <!--实现ApplicationContextAware类进行方法注入-->
+    <bean id="helloApi3" class="com.xyw55.methodInject.HelloImpl2" scope="singleton">
+        <property name="printer" ref="prototypePrinter"/>
+
+    </bean>
+    <bean id="helloApi4" class="com.xyw55.methodInject.HelloImpl2" scope="prototype">
+        <property name="printer" ref="prototypePrinter"/>
+
+    </bean>
+
+</beans>
