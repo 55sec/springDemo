@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean class="com.xyw55.resource.ResourceBean"/>
+
+    <!--注意此处“resource1”注入的路径没有前缀表示根据使用的ApplicationContext实现进行选择Resource实现-->
+    <bean id="resource1" class="com.xyw55.resource.ResourceBean2">
+        <property name="resource" value="com/xyw55/resource/test1.txt"/>
+    </bean>
+
+    <bean id="resource2" class="com.xyw55.resource.ResourceBean2">
+        <property name="resource" value="classpath:com/xyw55/resource/test1.txt"/>
+    </bean>
+</beans>
