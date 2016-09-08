@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:c="http://www.springframework.org/schema/c" xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+      http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- 该 BeanPostProcessor 将自动对标注 @Autowired 的 Bean 进行注入 -->
+    <!--<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>-->
+
+    <!-- 注解驱动   -->
+    <!--<context:annotation-config/>-->
+
+    <!-- 注解扫描-->
+    <context:component-scan base-package="com.xyw55.annotationDemo"/>
+
+    <bean id="studenta" class="com.xyw55.annotationDemo.Student">
+        <property name="username" value="xiaoxiao a"/>
+        <property name="age" value="11"/>
+    </bean>
+
+    <bean id="studentb" class="com.xyw55.annotationDemo.Student">
+        <property name="username" value="xiaoxiao b"/>
+        <property name="age" value="11"/>
+    </bean>
+
+    <bean id="teacher" class="com.xyw55.annotationDemo.Teacher">
+        <property name="username" value="laolao a"/>
+        <property name="age" value="55"/>
+    </bean>
+
+    <bean class="com.xyw55.annotationDemo.Teacher">
+        <qualifier value="teacherb"/>
+        <property name="username" value="laolao b"/>
+        <property name="age" value="55"/>
+    </bean>
+
+    <bean id="team" class="com.xyw55.annotationDemo.Team">
+        <!--<property name="student" value="student"/>-->
+        <!--<property name="teacher" ref="teacher"/>-->
+
+        <!--<property name="testidref">-->
+            <!--&lt;!&ndash;idref取bean的id值, ref取bean的引用&ndash;&gt;-->
+            <!--<idref bean="teacher"/>-->
+        <!--</property>-->
+    </bean>
+</beans>
