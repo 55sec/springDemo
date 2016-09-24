@@ -23,9 +23,11 @@ public class Main {
         //
         WebAppContext context = new WebAppContext("/Users/xiayiwei/code/demos/SpringDemo/springweb/src/main/webapp", "");
         context.setClassLoader(Thread.currentThread().getContextClassLoader());
-        context.setAttribute("org.eclipse.jetty.server.webapp.ContainerIncludeJarPattern",".*/[^/]*jstl.*\\.jar$");
+        // 对jsp的支持
+        context.setAttribute("org.eclipse.jetty.server.webapp.ContainerIncludeJarPattern", ".*/[^/]*jstl.*\\.jar$");
         context.setAttribute("org.eclipse.jetty.containerInitializers", jspInitializers());
         context.addBean(new ServletContainerInitializersStarter(context), true);
+
         context.setConfigurationClasses(new String[] {
                 "org.eclipse.jetty.webapp.WebInfConfiguration",
                 "org.eclipse.jetty.plus.webapp.EnvConfiguration",
@@ -38,6 +40,12 @@ public class Main {
         server.start();
         server.join();
     }
+
+
+    /**
+     * jsp解析
+     * @return
+     */
     private static List<ContainerInitializer> jspInitializers() {
         JettyJasperInitializer sci = new JettyJasperInitializer();
         ContainerInitializer initializer = new ContainerInitializer(sci, null);

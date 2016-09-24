@@ -1,4 +1,4 @@
-package com.xyw55.springMVC;
+package com.xyw55.springMVC.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

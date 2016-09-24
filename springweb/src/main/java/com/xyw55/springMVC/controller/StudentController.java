@@ -1,4 +1,4 @@
-package com.xyw55.springMVC;
+package com.xyw55.springMVC.controller;
 
 import com.xyw55.Student;
 import org.springframework.stereotype.Controller;

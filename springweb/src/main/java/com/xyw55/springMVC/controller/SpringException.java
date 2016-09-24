@@ -1,4 +1,4 @@
-package com.xyw55.springMVC;
+package com.xyw55.springMVC.controller;
 
 /**
  * Created by xiayiwei on 16/8/18.
