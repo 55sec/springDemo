@@ -1,6 +1,7 @@
 package com.xyw55.springMVC.aop;
 
 import com.xyw55.springMVC.service.IIntroductionService;
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 
@@ -14,9 +15,33 @@ public class HelloWorld2Aspect {
 //        System.out.println("hello world2 before point:" + param);
     }
 
-    @Before(value = "beforePointcut(param)", argNames = "param")
-    private void beforeAdvice(String param) {
+    /**
+     * 通知参数
+     * Spring AOP提供使用org.aspectj.lang.JoinPoint类型获取连接点数据,任何通知方法的第一个参数都可以是JoinPoint(环绕通知是ProceedingJoinPoint, JoinPoint子类),
+     * 当然第一个参数位置也可以是JoinPoint.StaticPart类型,这个只返回连接点的静态部分
+     * example:
+     * @Before(value="args(param) && //参数匹配为java.lang.String
+     *          target(bean) && //目标对象匹配为IPointcutService
+     *          @annotation(secure)",    //目标方法持有@Secure注解
+     *          argNames="jp, param, bean, secure")
+     * public void beforeAdvice(JoinPoint jp, String param, IPointcutService pointcutService, Secure secure){...}
+     *
+     * 通知顺序
+     * 1.前置通知/环绕通知(proceed方法执行之前) 执行顺序不确定
+     * 2.被通知方法
+     * 3.后置通知/环绕通知(proceed方法执行之后) 执行顺序不确定
+     * 而如果在同一切面中定义两个相同类型通知(如同是前置通知或环绕通知(proceed之前))并在同一连接点执行时,其执行顺序是未知的,会报错Advice precedence circularity error
+     * 如果确实需要指定执行顺序需要将通知重构到两个切 面,然后定义切面的执行顺序
+     *
+     * 不同切面中的通知执行顺序
+     * Spring中可以通过在切面实现类上实现org.springframework.core.Ordered接口或使用Order注解来指定切面优 先级。在多个切面中,Ordered.getValue()方法返回值(或者注解值)较小值的那个切面拥有较高优先级
+     * @param jp
+     * @param param
+     */
+    @Before(value = "beforePointcut(param)", argNames = "jp, param")
+    private void beforeAdvice(JoinPoint jp, String param) {
         System.out.println("hello world2 before advice:" + param);
+        System.out.println(jp.toLongString());
     }
 
 //    pointcut:同样是指定切入点表达式或命名切入点,如果指定了将覆盖value属性指定的,pointcut具有高优先级;

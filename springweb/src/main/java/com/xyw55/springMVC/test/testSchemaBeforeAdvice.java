@@ -26,13 +26,13 @@ public class testSchemaBeforeAdvice {
 
         ApplicationContext ctx = new ClassPathXmlApplicationContext("spring-config2.xml");
         IHelloWorldService helloworldService = ctx.getBean("helloworldService", IHelloWorldService.class);
-//        helloworldService.sayBefore("fir");
+        helloworldService.sayBefore("fir");
 //        helloworldService.sayAfterReturn();
 //        helloworldService.sayAfterExcept();
-        helloworldService.sayAround("laia");
+//        helloworldService.sayAround("laia");
 
-        IIntroductionService helloworldService2 = ctx.getBean("helloworldService", IIntroductionService.class);
-        helloworldService2.introduce();
+//        IIntroductionService helloworldService2 = ctx.getBean("helloworldService", IIntroductionService.class);
+//        helloworldService2.introduce();
         System.out.println("======================================");
 
     }

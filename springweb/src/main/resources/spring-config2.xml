@@ -9,6 +9,13 @@
 
     <!--使spring发现@AspectJ风格的切面-->
     <aop:aspectj-autoproxy/>
+    <!--proxy-target-class="true" 强制使用cglib做aop代理, 默认是jdk动态代理
+        cglib可以用来做类代理,而jdk动态代理只能做接口代理
+        CGLIB代理需要注意两个问题:
+            1.不能通知final方法,因为final方法不能被覆盖(CGLIB通过生成子类来创建代理)。
+            2.会产生两次构造器调用,第一次是目标类的构造器调用,第二次是CGLIB生成的代理类的构造器 调用。如果需要CGLIB代理方法,请确保两次构造器调用不影响应用。
+    -->
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
     <bean id="helloworldService" class="com.xyw55.springMVC.service.impl.HelloWorldService2"/>
     <bean id="aspect" class="com.xyw55.springMVC.aop.HelloWorld2Aspect"/>
 </beans>
